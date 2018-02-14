@@ -1,79 +1,51 @@
 This line is manually created
 
-The following line is cut and paste from a MVS file
+The following lines are cut and paste from a MVS file
       ******************************************************************
-      *   DO NOT REMOVE.  CHAMP LINK CONTROL STATEMENTS.
+      * DCLGEN TABLE(DSN8110.EMP)                                      *
+      *        LIBRARY(LOCK.DCLGEN.DSN8110(EMP))                       *
+      *        LANGUAGE(COBOL)                                         *
+      *        QUOTE                                                   *
+      * ... IS THE DCLGEN COMMAND THAT MADE THE FOLLOWING STATEMENTS   *
       ******************************************************************
-      * STARTOPT:
-      * DB2OEXP: YES
-      * DB2OISO: UR
-      * ENDOPT:
+           EXEC SQL DECLARE DSN8110.EMP TABLE
+           ( EMPNO                          CHAR(6) NOT NULL,
+             FIRSTNME                       VARCHAR(12) NOT NULL,
+             MIDINIT                        CHAR(1) NOT NULL,
+             LASTNAME                       VARCHAR(15) NOT NULL,
+             WORKDEPT                       CHAR(3),
+             PHONENO                        CHAR(4),
+             HIREDATE                       DATE,
+             JOB                            CHAR(8),
+             EDLEVEL                        SMALLINT,
+             SEX                            CHAR(1),
+             BIRTHDATE                      DATE,
+             SALARY                         DECIMAL(9, 2),
+             BONUS                          DECIMAL(9, 2),
+             COMM                           DECIMAL(9, 2)
+           ) END-EXEC.
       ******************************************************************
-       IDENTIFICATION DIVISION.
-       PROGRAM-ID. DB2CBLEX.
-      *    AUTHOR. R. WAGNER
-      *
-      *    OWNER:
-      *
-      *    JOB NUMBER(S):
-      *
-      *REMARKS.
-      *
-      *
-      *
-      *  INPUT PARMS:  NONE
-      *
-      *  OUTPUT PARMS: NONE
-      *
-      *  INPUT FILES:  NONE
-      *
-      *  OUTPUT FILES: ALL EMPLOYEE RECORDS
-      *
-      *  COPY MEMBERS:
-      *
-      *    TABLES:
-      *           NONE
-      *    SWITCHES:
-      *
-      *
-      *    EXITS:
-      *
-      *      NORMAL:
-      *             WHEN A END OF TABLE FETCH RETURN CODE IS RECEIVED
-      *
-      *      ABNORMAL:
-      *
-      *    RETURN CODES:
-      *
-      *    SPECIAL LOGIC:  NONE
-      *
+      * COBOL DECLARATION FOR TABLE DSN8110.EMP                        *
       ******************************************************************
-      ***             P R O G R A M  C H A N G E  L O G                *
+       01  DCLEMP.
+           10 EMPNO                PIC X(6).
+           10 FIRSTNME.
+              49 FIRSTNME-LEN      PIC S9(4) USAGE COMP.
+              49 FIRSTNME-TEXT     PIC X(12).
+           10 MIDINIT              PIC X(1).
+           10 LASTNAME.
+              49 LASTNAME-LEN      PIC S9(4) USAGE COMP.
+              49 LASTNAME-TEXT     PIC X(15).
+           10 WORKDEPT             PIC X(3).
+           10 PHONENO              PIC X(4).
+           10 HIREDATE             PIC X(10).
+           10 JOB                  PIC X(8).
+           10 EDLEVEL              PIC S9(4) USAGE COMP.
+           10 SEX                  PIC X(1).
+           10 BIRTHDATE            PIC X(10).
+           10 SALARY               PIC S9(7)V9(2) USAGE COMP-3.
+           10 BONUS                PIC S9(7)V9(2) USAGE COMP-3.
+           10 COMM                 PIC S9(7)V9(2) USAGE COMP-3.
       ******************************************************************
-      *  CHANGED BY:                                  DATE:            *
-      *                                                                *
-      *  LOUIS - ADDED REPORT HEADER                  2017-08-18       *
-      *  LOUIS - TURNED NUM ON                        2017-08-29       *
-      *  LOUIS - REMOVED REDUNDANT LOG                2017-08-30       *
-      *  LOUIS - ADDED A COPYBOOK FOR REPORT          2017-09-01       *
-      *  LOUIS - MOVED DCLGEN TO A COPYBOOK           2017-09-07       *
-      *  LOUIS - CHANGED COPYBOOK REPORT FOR SALARY   2017-09-22       *
-      *  LOUIS - ADDED A REPORT TITLE                 2017-11-14       *
-      *                                                                *
+      * THE NUMBER OF COLUMNS DESCRIBED BY THIS DECLARATION IS 14      *
       ******************************************************************
-      ***           E N D  P R O G R A M  C H A N G E  L O G           *
-      ******************************************************************
-      /
-       ENVIRONMENT DIVISION.
-       CONFIGURATION SECTION.
-
-       INPUT-OUTPUT SECTION.
-
-       FILE-CONTROL.
-
-           SELECT REPORT-FILE         ASSIGN TO RPTO0010.
-
-       DATA DIVISION.
-
-       FILE SECTION.
-                       
