@@ -1,4 +1,3 @@
-                                                                        *REPORT*
       ***             P R O G R A M  C H A N G E  L O G                **REPORT*
       *******************************************************************REPORT*
       *  CHANGED BY:                                  DATE:            **REPORT*
