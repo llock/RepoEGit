@@ -56,6 +56,7 @@
       *  LOUIS - MOVED DCLGEN TO A COPYBOOK           2017-09-07       *00540526
       *  LOUIS - CHANGED COPYBOOK REPORT FOR SALARY   2017-09-22       *00540632
       *  LOUIS - ADDED A REPORT TITLE                 2017-11-14       *00540733
+      *  LOUIS - ADDED ORDER BY TO DB2 CURSOR         2018-02-16       *00540733
       *                                                                *00540826
       ******************************************************************00550026
       ***           E N D  P R O G R A M  C H A N G E  L O G           *00560026
@@ -136,6 +137,7 @@
                             WORKDEPT,                                   02130026
                             SALARY                                      02140026
                      FROM DSN8110.EMP                                   02150026
+                     ORDER BY WORKDEPT ASC                              02160026
                                                                         02160026
                    END-EXEC.                                            02170026
                                                                         02180026

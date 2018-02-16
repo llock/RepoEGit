@@ -45,6 +45,6 @@
       /                                                                 *REPORT*
        01  W-REPORT-TITLE.                                              *REPORT*
            05  SPACER1                 PIC X(5) VALUE '*****'.          *REPORT*
-           05  REPORT-TITLE   PIC X(19) VALUE ' EMPLOYEE REPORT 2 '.    *REPORT*
+           05  REPORT-TITLE   PIC X(19) VALUE ' EMPLOYEE REPORT 3 '.    *REPORT*
            05  SPACER2                 PIC X(5) VALUE '*****'.          *REPORT*
            05  SPACER3                          PIC X(51) VALUE ' '.    *REPORT*
