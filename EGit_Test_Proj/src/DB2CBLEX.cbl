@@ -64,6 +64,7 @@
       *  LOUIS - CHANGED ORDER BY LASTNAME            2018-06-21       *00540733
       *  LOUIS - CHANGED ORDER BY EMPNO               2018-07-04       *00540733
       *  LOUIS - CHANGED ORDER BY SALARY              2018-07-05       *00540733
+      *  LOUIS - CHANGED ORDER BY LASTNAME            2018-07-05       *00540733
       *                                                                *00540826
       ******************************************************************00550026
       ***           E N D  P R O G R A M  C H A N G E  L O G           *00560026
@@ -144,7 +145,7 @@
                             WORKDEPT,                                   02130026
                             SALARY                                      02140026
                      FROM DSN8110.EMP                                   02150026
-                     ORDER BY SALARY ASC                                02160026
+                     ORDER BY LASTNAME ASC                              02160026
                                                                         02160026
                    END-EXEC.                                            02170026
                                                                         02180026
