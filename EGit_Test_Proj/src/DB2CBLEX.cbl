@@ -27,9 +27,10 @@
       *  OUTPUT FILES: ALL EMPLOYEE RECORDS                             00270026
       *                                                                 00280026
       *  COPY MEMBERS:                                                  00290026
-      *                                                                 00300026
+      *                DCLEMP                                           00300026
+      *                REPORT                                           00300026
       *    TABLES:                                                      00310026
-      *           NONE                                                  00320026
+      *            DSN8110.EMP                                          00320026
       *    SWITCHES:                                                    00330026
       *                                                                 00340026
       *                                                                 00350026
@@ -59,24 +60,13 @@
       *  LOUIS - ADDED ORDER BY TO DB2 CURSOR         2018-02-16       *00540733
       *  LOUIS - CHANGED ORDER BY SALARY              2018-03-05       *00540733
       *  LOUIS - CHANGED ORDER BY LASTNAME            2018-03-12       *00540733
-      *  LOUIS - CHANGED ORDER BY EMPNO               2018-03-12       *00540733
-      *  LOUIS - CHANGED ORDER BY SALARY              2018-04-06       *00540733
-      *  LOUIS - CHANGED ORDER BY LASTNAME            2018-06-21       *00540733
-      *  LOUIS - CHANGED ORDER BY EMPNO               2018-07-04       *00540733
-      *  LOUIS - CHANGED ORDER BY SALARY              2018-07-05       *00540733
-      *  LOUIS - CHANGED ORDER BY LASTNAME            2018-07-05       *00540733
-      *  LOUIS - CHANGED ORDER BY EMPNO               2018-07-09       *00540733
-      *  LOUIS - CHANGED ORDER BY WORKDEPT            2018-07-10       *00540733
-      *  LOUIS - CHANGED ORDER BY SALARY              2018-07-16       *00540733
-      *  LOUIS - CHANGED ORDER BY LASTNAME            2018-07-18       *00540733
-      *  LOUIS - CHANGED ORDER BY EMPNO               2018-07-30       *00540733
-      *  LOUIS - CHANGED ORDER BY WORKDEPT            2018-08-15       *00540733
-      *  LOUIS - CHANGED ORDER BY FIRSTNME            2018-08-17       *00540733
       *  LOUIS - CHANGED ORDER BY SALARY              2018-08-22       *00540733
       *  LOUIS - CHANGED ORDER BY FIRSTNME            2018-08-24       *00540733
       *  LOUIS - CHANGED ORDER BY LASTNAME            2018-08-24       *00540733
       *  LOUIS - CHANGED ORDER BY EMPNO               2018-08-27       *00540733
       *  LOUIS - CHANGED ORDER BY WORKDEPT            2018-08-27       *00540733
+      *  ******* UCD-ROLLED BACK TO AUG22 SNAPSHOT *************       *00540733
+      *  LOUIS - CHANGED ORDER BY FIRSTNME            2018-08-27       *00540733
       *                                                                *00540826
       ******************************************************************00550026
       ***           E N D  P R O G R A M  C H A N G E  L O G           *00560026
@@ -157,7 +147,7 @@
                             WORKDEPT,                                   02130026
                             SALARY                                      02140026
                      FROM DSN8110.EMP                                   02150026
-                     ORDER BY WORKDEPT ASC                              02160026
+                     ORDER BY FIRSTNME ASC                              02160026
                                                                         02160026
                    END-EXEC.                                            02170026
                                                                         02180026
