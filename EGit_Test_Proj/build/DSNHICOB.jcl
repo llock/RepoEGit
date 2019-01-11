@@ -89,4 +89,4 @@
 //SYSUT1   DD  SPACE=(1024,(50,50)),UNIT=SYSDA
 //********************************************************************
 //DSNHICOB PEND
-//S01 EXEC DSNHICOB,MEM=DB2CBLEX,USER='${USER}'
+//S01 EXEC DSNHICOB,MEM=DB2CBLEX,USER=LOCK
