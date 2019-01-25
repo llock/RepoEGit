@@ -7,14 +7,14 @@ pipeline {
                 //git clone commented out as it is done for Jenkinsfile in Jenkins configuration instead
                 //git 'https://github.com/llock/RepoEGit.git'
                 sh label: 'Current location:', script: 'pwd'
-                sh label: 'Directory list:', script: 'ls'
+                sh label: 'Directory list:', script: 'ls -R'
             }
         }
         stage('analysis') {
             steps {
                 echo 'analysis'
                 withSonarQubeEnv ('SonarQube') {
-                    sh "/var/jenkins_home/tools/hudson.plugins.sonar.SonarRunnerInstallation/SonarQube_Scanner/bin/sonar-scanner -Dsonar.host.url=${SONAR_HOST_URL}  -Dsonar.login=${SONAR_AUTH_TOKEN}  -Dsonar.projectKey=batch-zos -Dsonar.sources=./EGit_Test_Proj/src"
+                    sh label: 'Execute SonarQube Scanner', script: "/var/jenkins_home/tools/hudson.plugins.sonar.SonarRunnerInstallation/SonarQube_Scanner/bin/sonar-scanner -Dsonar.host.url=${SONAR_HOST_URL}  -Dsonar.login=${SONAR_AUTH_TOKEN}  -Dsonar.projectKey=batch-zos -Dsonar.sources=./EGit_Test_Proj/src"
                 }
             }
         }
