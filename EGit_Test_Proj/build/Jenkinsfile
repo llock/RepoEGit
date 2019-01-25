@@ -4,9 +4,10 @@ pipeline {
         stage('source') {
             steps {
                 echo 'source'
-                git 'https://github.com/llock/RepoEGit.git'
-                sh label: '', script: 'pwd'
-                sh label: '', script: 'ls'
+                //git clone commented out as it is done for Jenkinsfile in Jenkins configuration instead
+                //git 'https://github.com/llock/RepoEGit.git'
+                sh label: 'Current location:', script: 'pwd'
+                sh label: 'Directory list:', script: 'ls'
             }
         }
         stage('analysis') {
