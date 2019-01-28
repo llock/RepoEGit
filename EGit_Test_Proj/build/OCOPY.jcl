@@ -2,7 +2,11 @@
 //*********************************************************************
 //* COPY USS FILES TO MVS WITH ASCII TO EBCDIC CONVERSION
 //*********************************************************************
+//* USE THE FOLLOWING OCOPY OPTION IF ASCII TO EBCDIC IS NEEDED:
 //*
+//* OCOPY INDD(INHFS) OUTDD(OUTMVS) TEXT CONVERT((BPXFX311)) TO1047
+//*
+//*********************************************************************
 //OCOPY PROC INMEM=,OUTMEM=,TYPE=
 //*
 //COPYSTP  EXEC PGM=IKJEFT01
@@ -10,7 +14,7 @@
 //OUTMVS   DD DSN=LOCK.JENKINS.&TYPE(&OUTMEM),DISP=OLD
 //SYSTSPRT DD SYSOUT=*
 //SYSTSIN  DD *
-OCOPY INDD(INHFS) OUTDD(OUTMVS) TEXT CONVERT((BPXFX311)) TO1047
+OCOPY INDD(INHFS) OUTDD(OUTMVS) TEXT CONVERT(NO)
 /*
 //OCOPY PEND
 //S01 EXEC OCOPY,INMEM='DB2CBLEX.cbl',OUTMEM='DB2CBLEX',TYPE='COBOL'
