@@ -8,6 +8,6 @@
 //STDPARM  DD *
 SH /opt/ibm-ucd/agent/bin/buztool.sh createzosversion
        "-c" "Louis_zOS_DB2"
-       "-s" "/u/lock/db2App/shiplist.xml"
+       "-s" "/u/lock/jenkins/EGit_Test_Proj/build/shiplist.xml"
        "-v" ${BUILD_TIMESTAMP}
 /*
