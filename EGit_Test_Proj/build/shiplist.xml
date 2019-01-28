@@ -1,15 +1,1 @@
-<?xml version="1.0" encoding='CP037"?>
-<manifest type="MANIFEST_SHIPLIST">
-    <container name="LOCK.JENKINS.COBOL" type="PDS" deployType="COBOL">
-        <resource name="*"  type="PDSMember"/>
-    </container>
-    <container name="LOCK.JENKINS.COPYLIB" type="PDS" deployType="COPYLIB">
-        <resource name="*"  type="PDSMember"/>
-    </container>    
-    <container name="LOCK.JENKINS.LOAD" type="PDS" deployType="LOAD">
-        <resource name="*"  type="PDSMember"/>
-    </container>
-    <container name="LOCK.JENKINS.DBRM" type="PDS" deployType="DBRM">
-        <resource name="*" type="PDSMember"/>
-    </container>
-</manifest>
+Lo§”“@¥…™¢‰–•~ñKð@…•ƒ–„‰•‡~Ã×ðó÷onL”•‰†…¢£@£¨—…~ÔÁÕÉÆÅâãmâÈÉ×ÓÉâãn@@@@Lƒ–•£‰•…™@•”…~ÓÖÃÒKÑÅÕÒÉÕâKÃÖÂÖÓ@£¨—…~×Äâ@„…—“–¨ã¨—…~ÃÖÂÖÓn@@@@@@@@L™…¢–¤™ƒ…@•”…~\@@£¨—…~×ÄâÔ…”‚…™an@@@@Laƒ–•£‰•…™n@@@@Lƒ–•£‰•…™@•”…~ÓÖÃÒKÑÅÕÒÉÕâKÃÖ×èÓÉÂ@£¨—…~×Äâ@„…—“–¨ã¨—…~ÃÖ×èÓÉÂn@@@@@@@@L™…¢–¤™ƒ…@•”…~\@@£¨—…~×ÄâÔ…”‚…™an@@@@Laƒ–•£‰•…™n@@@@@@@@Lƒ–•£‰•…™@•”…~ÓÖÃÒKÑÅÕÒÉÕâKÓÖÁÄ@£¨—…~×Äâ@„…—“–¨ã¨—…~ÓÖÁÄn@@@@@@@@L™…¢–¤™ƒ…@•”…~\@@£¨—…~×ÄâÔ…”‚…™an@@@@Laƒ–•£‰•…™n@@@@Lƒ–•£‰•…™@•”…~ÓÖÃÒKÑÅÕÒÉÕâKÄÂÙÔ@£¨—…~×Äâ@„…—“–¨ã¨—…~ÄÂÙÔn@@@@@@@@L™…¢–¤™ƒ…@•”…~\@£¨—…~×ÄâÔ…”‚…™an@@@@Laƒ–•£‰•…™nLa”•‰†…¢£n
