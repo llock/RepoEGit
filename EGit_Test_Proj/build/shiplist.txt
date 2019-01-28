@@ -1,1 +1,15 @@
-temp
+<?xml version="1.0" encoding="CP037"?>
+<manifest type="MANIFEST_SHIPLIST">
+    <container name="LOCK.JENKINS.COBOL" type="PDS" deployType="COBOL">
+        <resource name="*"  type="PDSMember"/>
+    </container>
+    <container name="LOCK.JENKINS.COPYLIB" type="PDS" deployType="COPYLIB">
+        <resource name="*"  type="PDSMember"/>
+    </container>
+    <container name="LOCK.JENKINS.LOAD" type="PDS" deployType="LOAD">
+        <resource name="*"  type="PDSMember"/>
+    </container>
+    <container name="LOCK.JENKINS.DBRM" type="PDS" deployType="DBRM">
+        <resource name="*" type="PDSMember"/>
+    </container>
+</manifest>
