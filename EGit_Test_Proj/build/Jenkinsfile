@@ -24,7 +24,7 @@ pipeline {
                 echo "BUILD_ID=${BUILD_ID}"
                 echo "BUILD_TIMESTAMP=${BUILD_TIMESTAMP}"
                 sh label: 'Before Change', script: 'cat ./EGit_Test_Proj/build/BUZRJCL.jcl'
-                sh label: 'Replace token', script: 'sed s/@BUILD_TIMESTAMP@/${BUILD_TIMESTAMP}/g ./EGit_Test_Proj/build/BUZRJCL.jcl > BUZRJCLN.jcl'
+                sh label: 'Replace token', script: 'sed s/@BUILD_TIMESTAMP@/${BUILD_TIMESTAMP}/g ./EGit_Test_Proj/build/BUZRJCL.jcl > ./EGit_Test_Proj/build/BUZRJCLN.jcl'
                 //echo "       '-v' ${BUILD_TIMESTAMP}" >> ./EGit_Test_Proj/build/BUZRJCL.jcl
                 sh label: 'After Change', script: 'cat ./EGit_Test_Proj/build/BUZRJCLN.jcl'
 
