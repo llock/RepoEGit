@@ -2,10 +2,9 @@
 //*********************************************************************
 //* CREATE UCD COMPONENT VERSION
 //*
-//* SH /opt/ibm-ucd/agent/bin/buztool.sh createzosversion
-//*       "-c" "Louis_zOS_DB2"
-//*       "-s" "/u/lock/jenkins/EGit_Test_Proj/build/shiplist.xml"
-//*       "-v" ${BUILD_TIMESTAMP}
+//* @BUILD_TIMESTAMP@ will be replaced with JENKINS VARIABLE VALUE OF
+//* ${BUILD_TIMESTAMP} IN JENKINS PIPELINE
+//*
 //*********************************************************************
 //BUZTOOL  EXEC PGM=BPXBATCH,REGION=0M
 //STDOUT   DD SYSOUT=*
