@@ -34,6 +34,25 @@ pipeline {
                 step([$class: 'ZOSJobSubmitter', JESINTERFACELEVEL1: false, MaxCC: '0000', credentialsId: '82a5694e-761c-4f64-b722-fb7c689c6b47', deleteJobFromSpool: false, jobFile: './EGit_Test_Proj/build/BUZRJCL.jcl', jobLogToConsole: false, port: 21, server: '9.144.41.103', wait: true, waitTime: 0])
             }
         }
+        stage('deploy') {
+            steps {
+                echo 'deploy placeholder only for now.'
+             //
+             // The following script is pending for updates after ucd agent is brought online again
+             //
+             // step([$class: 'UCDeployPublisher',
+             //      siteName: 'IBM SBY UCD Server',
+             //      deploy: [
+             //                $class: 'com.urbancode.jenkins.plugins.ucdeploy.DeployHelper$DeployBlock',
+             //                deployApp: 'Louis_zOS_DB2_Jenkins',
+             //                deployEnv: 'Louis DEV',
+             //                deployProc: 'Deploy DB2 App',
+             //                deployVersions: '${BUILD_TIMESTAMP}',
+             //                deployOnlyChanged: false
+             //              ]
+             //       ])
+            }
+        }
     }
     post {
         always {
