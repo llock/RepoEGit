@@ -11,9 +11,9 @@ pipeline {
             }
         }
         stage('analysis') {
+            def scannerHome = tool 'SonarQube Scanner'
             steps {
                 echo 'analysis'
-                def scannerHome = tool 'SonarQube Scanner'
                 withSonarQubeEnv ('SonarQube') {
              // sh label: 'Execute SonarQube Scanner', script: "/var/jenkins_home/tools/hudson.plugins.sonar.SonarRunnerInstallation/SonarQube_Scanner/bin/sonar-scanner -Dsonar.host.url=${SONAR_HOST_URL}  -Dsonar.login=${SONAR_AUTH_TOKEN}  -Dsonar.projectKey=batch-zos -Dsonar.sources=./EGit_Test_Proj/src"
                 sh label: 'Execute SonarQube Scanner', script: "${scannerHome}/bin/sonar-scanner -Dsonar.host.url=${SONAR_HOST_URL}  -Dsonar.login=${SONAR_AUTH_TOKEN}  -Dsonar.projectKey=batch-zos -Dsonar.sources=./EGit_Test_Proj/src"
