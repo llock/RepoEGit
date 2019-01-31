@@ -11,20 +11,16 @@ pipeline {
             }
         }
         stage('analysis') {
-            def scannerHome = tool 'SonarQube Scanner'
             steps {
                 echo 'analysis'
                 withSonarQubeEnv ('SonarQube') {
-             // sh label: 'Execute SonarQube Scanner', script: "/var/jenkins_home/tools/hudson.plugins.sonar.SonarRunnerInstallation/SonarQube_Scanner/bin/sonar-scanner -Dsonar.host.url=${SONAR_HOST_URL}  -Dsonar.login=${SONAR_AUTH_TOKEN}  -Dsonar.projectKey=batch-zos -Dsonar.sources=./EGit_Test_Proj/src"
-                sh label: 'Execute SonarQube Scanner', script: "${scannerHome}/bin/sonar-scanner -Dsonar.host.url=${SONAR_HOST_URL}  -Dsonar.login=${SONAR_AUTH_TOKEN}  -Dsonar.projectKey=batch-zos -Dsonar.sources=./EGit_Test_Proj/src"
+                sh label: 'Execute SonarQube Scanner', script: "/var/jenkins_home/tools/hudson.plugins.sonar.SonarRunnerInstallation/SonarQube_Scanner/bin/sonar-scanner -Dsonar.host.url=${SONAR_HOST_URL}  -Dsonar.login=${SONAR_AUTH_TOKEN}  -Dsonar.projectKey=batch-zos -Dsonar.sources=./EGit_Test_Proj/src"
                 }
             }
         }
         stage('build') {
             steps {
                 echo 'build'
-                echo "BUILD_ID=${BUILD_ID}"
-                echo "BUILD_TIMESTAMP=${BUILD_TIMESTAMP}"
                 sh label: 'Before Change', script: 'cat ./EGit_Test_Proj/build/BUZRTMP.jcl'
                 sh label: 'Replace token', script: 'sed s/@BUILD_TIMESTAMP@/${BUILD_TIMESTAMP}/g ./EGit_Test_Proj/build/BUZRTMP.jcl > ./EGit_Test_Proj/build/BUZRJCL.jcl'
                 sh label: 'After Change', script: 'cat ./EGit_Test_Proj/build/BUZRJCL.jcl'
