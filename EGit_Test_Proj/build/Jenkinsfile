@@ -4,8 +4,8 @@ pipeline {
         stage('source') {
             steps {
                 echo 'source'
-                //git clone commented out as it is done for Jenkinsfile in Jenkins configuration instead
-                //git 'https://github.com/llock/RepoEGit.git'
+				//git clone commented out as it is done for Jenkinsfile in Jenkins configuration instead
+				//git 'https://github.com/llock/RepoEGit.git'
                 sh label: 'Current location:', script: 'pwd'
                 sh label: 'Directory list:', script: 'ls -R'
             }
@@ -15,28 +15,32 @@ pipeline {
                 sonarHome = '/var/jenkins_home/tools/hudson.plugins.sonar.SonarRunnerInstallation/SonarQube_Scanner'
             }
             steps {
-                echo 'analysis'
+                echo 'analysis'                
                 withSonarQubeEnv ('SonarQube') {
-                sh label: 'Execute SonarQube Scanner',
-                   script: '${sonarHome}/bin/sonar-scanner\
-                            -Dsonar.host.url=${SONAR_HOST_URL}\
-                            -Dsonar.login=${SONAR_AUTH_TOKEN}\
-                            -Dsonar.projectKey=batch-zos\
-                            -Dsonar.sources=./EGit_Test_Proj/src\
+                sh 	label: 'Execute SonarQube Scanner',
+                   	script: '${sonarHome}/bin/sonar-scanner\
+                             -Dsonar.host.url=${SONAR_HOST_URL}\
+                             -Dsonar.login=${SONAR_AUTH_TOKEN}\
+                             -Dsonar.projectKey=batch-zos\
+                             -Dsonar.sources=./EGit_Test_Proj/src\
                            '
                 }
             }
         }
         stage('build') {
             steps {
-                echo 'build'
-                sh label: 'Before Change', script: 'cat ./EGit_Test_Proj/build/BUZRTMP.jcl'
-                sh label: 'Replace token',
-                   script: 'sed s/@BUILD_TIMESTAMP@/${BUILD_TIMESTAMP}/g\
+               	echo 'build'
+                
+                sh 	label: 'Before Change',
+                	script: 'cat ./EGit_Test_Proj/build/BUZRTMP.jcl'
+                
+                sh 	label: 'Replace token',
+                   	script: 'sed s/@BUILD_TIMESTAMP@/${BUILD_TIMESTAMP}/g\
                             ./EGit_Test_Proj/build/BUZRTMP.jcl >\
                             ./EGit_Test_Proj/build/BUZRJCL.jcl\
                            '
-                sh label: 'After Change', script: 'cat ./EGit_Test_Proj/build/BUZRJCL.jcl'
+                sh 	label: 'After Change',
+                	script: 'cat ./EGit_Test_Proj/build/BUZRJCL.jcl'
 
                 // ftpPublisher parameter asciiMode must set to true to perform ASCII to EBCDIC conversion.
                 // If false, it will be transferred as binary.
@@ -48,57 +52,59 @@ pipeline {
                              masterNodeName: "master",
                              publishers: [[configName: 'DC03',
                                            transfers: [[asciiMode: true,
-                             				cleanRemote: false,
-                             				excludes: '',
-                             				flatten: false,
-                             				makeEmptyDirs: false,
-                             				noDefaultExcludes: false,
-                             				patternSeparator: '[, ]+',
-                             				remoteDirectory: '',
-                             				remoteDirectorySDF: false,
-                             				removePrefix: '',
-                             				sourceFiles: '**/*.cbl,**/*.cpy,**/shiplist.xml']],
-                             		   usePromotionTimestamp: false,
-                                           useWorkspaceInPromotion: false,
-                                           verbose: false]]
+                             							cleanRemote: false,
+                             							excludes: '',
+                             							flatten: false,
+                             							makeEmptyDirs: false,
+                             							noDefaultExcludes: false,
+                             							patternSeparator: '[, ]+',
+                             							remoteDirectory: '',
+                             							remoteDirectorySDF: false,
+                             							removePrefix: '',
+                             							sourceFiles: '**/*.cbl,**/*.cpy,**/shiplist.xml'
+                             			 			  ]],
+                         				   usePromotionTimestamp: false,
+                         				   useWorkspaceInPromotion: false,
+                          				   verbose: false
+                          				 ]]
 
                 // Copy source files from USS to MVS
-                step([$class: 'ZOSJobSubmitter',
-                	      JESINTERFACELEVEL1: false,
-                	      MaxCC: '0000',
-                	      credentialsId: '82a5694e-761c-4f64-b722-fb7c689c6b47',
-             		      deleteJobFromSpool: false,
-             		      jobFile: './EGit_Test_Proj/build/OCOPY.jcl',
-             		      jobLogToConsole: false,
-             		      port: 21,
-             		      server: '9.144.41.103',
-             		      wait: true,waitTime: 0
+                step([$class: 	'ZOSJobSubmitter',
+                	      		JESINTERFACELEVEL1: false,
+                	      		MaxCC: '0000',
+                	      		credentialsId: '82a5694e-761c-4f64-b722-fb7c689c6b47',
+             		      		deleteJobFromSpool: false,
+             		      		jobFile: './EGit_Test_Proj/build/OCOPY.jcl',
+             		      		jobLogToConsole: false,
+             		      		port: 21,
+             		      		server: '9.144.41.103',
+             		      		wait: true,waitTime: 0
                      ])
 
                 // Compile Link-edit
-                step([$class: 'ZOSJobSubmitter',
-              	       	      JESINTERFACELEVEL1: false,
-              		      MaxCC: '0000',
-              		      credentialsId: '82a5694e-761c-4f64-b722-fb7c689c6b47',
-              		      deleteJobFromSpool: false,
-              		      jobFile: './EGit_Test_Proj/build/DSNHICOB.jcl',
-              		      jobLogToConsole: false,
-              		      port: 21,
-              		      server: '9.144.41.103',
-              		      wait: true,waitTime: 0
+                step([$class: 	'ZOSJobSubmitter',
+              	       	      	JESINTERFACELEVEL1: false,
+              		      		MaxCC: '0000',
+              		      		credentialsId: '82a5694e-761c-4f64-b722-fb7c689c6b47',
+              		      		deleteJobFromSpool: false,
+              		      		jobFile: './EGit_Test_Proj/build/DSNHICOB.jcl',
+              		      		jobLogToConsole: false,
+              		      		port: 21,
+              		      		server: '9.144.41.103',
+              		      		wait: true,waitTime: 0
                      ])
 
                 // Create UCD components
-                step([$class: 'ZOSJobSubmitter',
-                	      JESINTERFACELEVEL1: false,
-              		      MaxCC: '0000',
-              		      credentialsId: '82a5694e-761c-4f64-b722-fb7c689c6b47',
-              		      deleteJobFromSpool: false,
-              		      jobFile: './EGit_Test_Proj/build/BUZRJCL.jcl',
-              		      jobLogToConsole: false,
-              		      port: 21,
-              		      server: '9.144.41.103',
-              		      wait: true,waitTime: 0
+                step([$class: 	'ZOSJobSubmitter',
+                	      		JESINTERFACELEVEL1: false,
+              		      		MaxCC: '0000',
+              		      		credentialsId: '82a5694e-761c-4f64-b722-fb7c689c6b47',
+              		      		deleteJobFromSpool: false,
+              		      		jobFile: './EGit_Test_Proj/build/BUZRJCL.jcl',
+              		      		jobLogToConsole: false,
+              		      		port: 21,
+              		      		server: '9.144.41.103',
+              		      		wait: true,waitTime: 0
                      ])
             }
         }
@@ -112,13 +118,13 @@ pipeline {
              //               siteName: 'IBM SBY UCD Server',
              //               deploy: [
              //                        $class: 'com.urbancode.jenkins.plugins.ucdeploy.DeployHelper$DeployBlock',
-             //                        deployApp: 'Louis_zOS_DB2_Jenkins',
-             //                        deployEnv: 'Louis DEV',
-             //                        deployProc: 'Deploy DB2 App',
-             //                        deployVersions: '${BUILD_TIMESTAMP}',
-             //                        deployOnlyChanged: false
+             //                        			deployApp: 'Louis_zOS_DB2_Jenkins',
+             //                        			deployEnv: 'Louis DEV',
+             //                        			deployProc: 'Deploy DB2 App',
+             //                        			deployVersions: '${BUILD_TIMESTAMP}',
+             //                        			deployOnlyChanged: false
              //                       ]
-             //       ])
+             //      ])
             }
         }
     }
