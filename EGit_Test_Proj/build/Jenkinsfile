@@ -82,7 +82,7 @@ pipeline {
                     credentialsId: '82a5694e-761c-4f64-b722-fb7c689c6b47',
              	    deleteJobFromSpool: false,
              	    jobFile: './EGit_Test_Proj/build/OCOPY.jcl',
-             	    jobLogToConsole: false,
+             	    jobLogToConsole: true,
              	    port: 21,
              	    server: '9.144.41.103',
              	    wait: true,waitTime: 0
