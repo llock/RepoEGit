@@ -85,7 +85,8 @@ pipeline {
              	    jobLogToConsole: true,
              	    port: 21,
              	    server: '9.144.41.103',
-             	    wait: true,waitTime: 0
+             	    wait: true,
+             	    waitTime: 0
                 ])
 
                 // Compile Link-edit
@@ -99,7 +100,8 @@ pipeline {
               	    jobLogToConsole: false,
               	    port: 21,
               	    server: '9.144.41.103',
-              	    wait: true,waitTime: 0
+              	    wait: true,
+              	    waitTime: 0
                 ])
 
                 // Create UCD components
@@ -113,7 +115,8 @@ pipeline {
               	    jobLogToConsole: false,
               	    port: 21,
               	    server: '9.144.41.103',
-              	    wait: true,waitTime: 0
+              	    wait: true,
+              	    waitTime: 0
                 ])
             }
         }
