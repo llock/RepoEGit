@@ -122,7 +122,7 @@ pipeline {
         }
         stage('deploy') {
             steps {
-                echo 'deploy placeholder only for now.'
+                echo 'Placeholder only deploy for now.'
              //
              // The following script is pending for updates after ucd agent is brought online again
              //
